@@ -1,1 +1,1 @@
-This is the stub README.txt for the "djula-locale" project.
+This is a common lisp project to create and update cl-locale translate dictionaries from Djula template files.
