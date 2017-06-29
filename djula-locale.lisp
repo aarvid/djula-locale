@@ -11,7 +11,9 @@
   (djula::parse-template-string string))
 
 (defun string-string-p (s)
-  (and (eq #\" (first-elt s))
+  "test if s is a string that contains a string representation"
+  (and (stringp s)
+       (eq #\" (first-elt s))
        (eq #\" (last-elt s))))
 
 (defun string-translate-strings (string)
@@ -20,7 +22,7 @@
    (loop for l in (parse-template-string string)
          for x = (first l)
          for y = (serapeum:trim-whitespace (second l))
-         when (and (eq x :unparsed-translation-variable)
+         when (and (eq x :unparsed-translation)
                    (string-string-p y))
            collect (read-from-string y))
    :test #'string=))
